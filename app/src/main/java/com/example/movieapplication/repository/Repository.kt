@@ -11,17 +11,17 @@ class Repository(private val  movieApiService: MovieApiService,private val movie
     private val movieLiveData = MutableLiveData<MovieList>()
 
     val movies: LiveData<MovieList>
-    get() = movieLiveData
+        get() = movieLiveData
 
-
-    suspend fun getMovies(){
+    suspend fun getMovies() {
         val result1 = movieApiService.getMovieList1()
         val result2 = movieApiService.getMovieList2()
-        if (result1?.body()!=null && result2?.body()!=null){
-            movieDataBase.movieDao().addMovies(result1.body()!!.MovieList)
-            movieLiveData.postValue(result1.body())
-            movieDataBase.movieDao().addMovies(result2.body()!!.MovieList)
-            movieLiveData.postValue(result2.body())
+        if (result1.body() != null && result2.body() != null) {
+            val combinedList = MovieList(
+                result1.body()!!.MovieList + result2.body()!!.MovieList
+            )
+            movieDataBase.movieDao().addMovies(combinedList.MovieList)
+            movieLiveData.postValue(combinedList)
         }
     }
 }
