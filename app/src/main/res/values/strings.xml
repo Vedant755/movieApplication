@@ -2,4 +2,9 @@
     <string name="app_name">MovieApplication</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="titleSymbol">&#x1F3AC;</string>
+    <string name="yearSymbol">&#x1F4C5;</string>
+    <string name="runtime_symbol">&#x231A; Running_Time</string>
+    <string name="castSymbol">&#x1F464;</string>
+
 </resources>
